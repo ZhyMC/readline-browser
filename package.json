@@ -1,6 +1,6 @@
 {
   "name": "readline-browser",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "typings": "lib/index.d.ts",
   "main": "lib/index.js",

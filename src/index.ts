@@ -46,7 +46,7 @@ const ESCAPE_CODE_TIMEOUT = 500;
  * @param {boolean} [terminal]
  * @returns {Interface}
  */
-function createInterface(input, output, completer, terminal) {
+function createInterface(input, output?, completer?, terminal?) {
   return new Interface(input, output, completer, terminal);
 }
 
@@ -167,7 +167,7 @@ class Interface extends EventEmitter2 {
     this.setPrompt(prompt);
   
     this.terminal = !!terminal;
-    this.input.on('error', onerror);
+    this.input.on('error', this.onerror.bind(this));
 
 
 
@@ -490,7 +490,7 @@ class Interface extends EventEmitter2 {
    *   }} [key]
    * @returns {void}
    */
-  write(d, key) {
+  write(d?, key?) {
     if (this.paused) this.resume();
     if (this.terminal) {
       this._ttyWrite(d, key);
